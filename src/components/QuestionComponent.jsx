@@ -18,24 +18,24 @@ export const Question = ({ onYes }) => {
     return "scale(" + count + ")";
   };
 
-  
 
   const handleClick = () => {
     setCount(count + 1);
     setSizeY(sizeY + sum);
-    setSizeN(sizeN - 14);
+    setSizeN(sizeN - 16);
     setPos("absolute");
     let s = ref.current.clientWidth;
     let minW = ((windowWidth / 2) - s) * -1;
-    let maxW = ((windowWidth / 2));
-    let minH = (windowHeigth / 2 ) * -1;
-    let maxH = ((windowHeigth / 2));
+    let maxW = windowWidth / 2;
+    let minH = (windowHeigth / 2) * -1;
+    let maxH = windowHeigth / 2;
     let margin = s / 2;
-    let r1 = (Math.random() * maxW) + (minW + margin);
-    let r2 = (Math.random() * maxH) + minH;
-    console.log(r2);
+    let min = ((minW + (s + (windowWidth / 8))) + margin) - 150
+    let r1 = Math.random() * (maxW - min) + min;
+    let r2 = Math.random() * maxH + minH;
+    console.log(s);
     // setLeft(Math.random() * (screen.width - 150));
-    setLeft(r1 + s);
+    setLeft(r1);
     setTop(r2);
     setSum(40);
   };
@@ -53,8 +53,8 @@ export const Question = ({ onYes }) => {
     "https://i.pinimg.com/originals/e0/73/b2/e073b2845004817bd41b936ab12f6b39.gif",
     "https://i.pinimg.com/originals/26/19/76/26197684cd65449508b6ceb08410f5f6.gif",
     "https://i.pinimg.com/originals/f1/70/aa/f170aad90818e1d06cf59c6f9bb60571.gif",
-    "https://img.wattpad.com/c7b9778cf8fef077e4cc8c9f2ad01b87f6eca436/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f774d665a577566626873707336513d3d2d38333231363035352e313566663163646130373538336332613334303936363532323936372e676966?s=fit"
-  ]
+    "https://img.wattpad.com/c7b9778cf8fef077e4cc8c9f2ad01b87f6eca436/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f774d665a577566626873707336513d3d2d38333231363035352e313566663163646130373538336332613334303936363532323936372e676966?s=fit",
+  ];
 
   const getText = () => {
     return texts[Math.min(count, texts.length - 1)];
@@ -66,11 +66,7 @@ export const Question = ({ onYes }) => {
   return (
     <div className="holder">
       <div className="gifHolder">
-        <img
-          className="gif"
-          src={getGifs()}
-          alt="valentine img"
-        />
+        <img className="gif" src={getGifs()} alt="valentine img" />
       </div>
       <div className="buttonHolder">
         <button
