@@ -2,7 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import { Question } from "./components/QuestionComponent";
 import { Yes } from "./components/YesComponent";
-import Confetti from 'react-confetti'
+import Confetti from 'react-confetti';
+import { SayYes } from "./api/FecthAnswer";
 
 function App() {
   const width = window.innerWidth;
@@ -11,6 +12,7 @@ function App() {
 
   const onYes = (e) => {
     setYes(true);
+    SayYes();
   };
 
   return (

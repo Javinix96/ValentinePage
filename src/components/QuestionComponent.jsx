@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SayNo } from "../api/FecthAnswer";
 
 import("./css/component.css");
 
@@ -38,6 +39,8 @@ export const Question = ({ onYes }) => {
     setLeft(r1);
     setTop(r2);
     setSum(40);
+
+    SayNo();
   };
 
   const texts = [
